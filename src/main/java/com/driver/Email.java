@@ -29,8 +29,8 @@ public class Email {
 
         if(oldPassword.equals(password)){
             if(isValid(newPassword)){
-                this.password = newPassword;
                 System.out.println("Password changed successfully");
+                this.password = newPassword;
             }
             else{
                 System.out.println("The new password is not valid");
@@ -42,10 +42,10 @@ public class Email {
 
     }
     private boolean isValid(String password){
-        boolean capitalLetter = false;
-        boolean smallLetter = false;
-        boolean digit = false;
-        boolean  specialCharactor = false;
+        Boolean capitalLetter = false;
+        Boolean smallLetter = false;
+        Boolean digit = false;
+        Boolean  specialCharactor = false;
 
         if(password.length() < 8){
             return false;
@@ -69,9 +69,9 @@ public class Email {
         if(capitalLetter && smallLetter && digit && specialCharactor){
             return true;
         }
-        else{
+
             return false;
-        }
+
 
     }
 }
