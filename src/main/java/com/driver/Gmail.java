@@ -32,7 +32,7 @@ public class Gmail extends Email {
             Inbox.remove(0);
             Trash.add(oledstMail);
         }
-        Triple<Date, String, String> mail = Triple.of(date, sender,message);
+        Triple<Date, String, String> mail = Triple.of(date,sender,message);
         Inbox.add(mail);
     }
 
@@ -40,16 +40,17 @@ public class Gmail extends Email {
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
         int index = -1;
-        for(int i=0; i<Inbox.size(); i++){
-            if(message.equals(Inbox.get(i).getRight())){
+        for(int i=0; i<Inbox.size(); i++) {
+            if (message.equals(Inbox.get(i).getRight())) {
                 index = i;
                 break;
             }
+        }
             if(index != -1){
                 Trash.add(Inbox.get(index));
                 Inbox.remove(index);
             }
-        }
+
 
 
     }
@@ -57,7 +58,7 @@ public class Gmail extends Email {
     public String findLatestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
-        if(Inbox.size() == 0){
+        if(Inbox.isEmpty()){
             return null;
         }
         return Inbox.get((Inbox.size() - 1)).getRight();
@@ -67,7 +68,7 @@ public class Gmail extends Email {
     public String findOldestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the oldest mail present in the inbox
-        if(Inbox.size() == 0){
+        if(Inbox.isEmpty()){
             return null;
         }
         return Inbox.get(0).getRight();
